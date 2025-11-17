@@ -1,0 +1,12 @@
+{
+  "ignore": [
+    "uploads/hls/**",
+    "uploads/**/*.ts",
+    "uploads/**/*.m3u8",
+    "node_modules/**",
+    ".git/**",
+    "logs/**",
+    "temp/**"
+  ],
+  "ext": "js,json"
+}

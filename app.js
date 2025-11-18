@@ -1,19 +1,13 @@
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 10000;
-const host = process.env.HOST || "localhost";
 const cors = require('cors');
 
 require("dotenv").config();
 
-
 app.use(express.json());
-
 app.use(cors());
-
 app.use("/api/", require("./routes/apiRoutes"));
-
-
 
 // Error handlers
 app.use((err, req, res, next) => {
@@ -41,7 +35,6 @@ app.use((err, req, res, next) => {
     }
 });
 
-
 app.get('/', (req, res) => {
     res.json({
         message: "Welcome to the Node API",
@@ -49,12 +42,7 @@ app.get('/', (req, res) => {
     });
 });
 
-app.get("/", (req, res) => {
-  res.send("API is running...");
-});
-
-
-app.listen(port, host, () => {
-    const addr =  `http://localhost:${port}`;
-    console.log(`Server listening at ${addr}`);
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+    console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
 });

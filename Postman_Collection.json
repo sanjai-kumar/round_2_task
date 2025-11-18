@@ -1,0 +1,426 @@
+{
+  "info": {
+    "name": "Product Category Manager API",
+    "_postman_id": "product-category-api-v1",
+    "description": "Complete API collection for Product and Category management system. Includes all CRUD operations with proper authentication.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Categories",
+      "description": "All category-related endpoints",
+      "item": [
+        {
+          "name": "Create Category",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{api_key}}",
+                "description": "Required for write operations"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Electronics\",\n  \"description\": \"Electronic devices and gadgets\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/categories",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "categories"
+              ]
+            },
+            "description": "Creates a new category. Requires API key authentication. Category name must be unique."
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "tasknapi"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Electronics\",\n  \"description\": \"Electronic devices\"\n}"
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Category created successfully\",\n  \"data\": {\n    \"id\": 1,\n    \"name\": \"Electronics\",\n    \"description\": \"Electronic devices and gadgets\",\n    \"createdAt\": \"2024-11-18T10:00:00.000Z\",\n    \"updatedAt\": \"2024-11-18T10:00:00.000Z\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get All Categories",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/categories",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "categories"
+              ]
+            },
+            "description": "Retrieves all categories. No authentication required."
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"message\": \"Categories fetched successfully\",\n  \"data\": [\n    {\n      \"id\": 1,\n      \"name\": \"Electronics\",\n      \"description\": \"Electronic devices and gadgets\",\n      \"createdAt\": \"2024-11-18T10:00:00.000Z\",\n      \"updatedAt\": \"2024-11-18T10:00:00.000Z\"\n    },\n    {\n      \"id\": 2,\n      \"name\": \"Clothing\",\n      \"description\": \"Apparel and fashion items\",\n      \"createdAt\": \"2024-11-18T10:05:00.000Z\",\n      \"updatedAt\": \"2024-11-18T10:05:00.000Z\"\n    }\n  ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Category by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/categories/:id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "categories",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1",
+                  "description": "Category ID"
+                }
+              ]
+            },
+            "description": "Retrieves a single category by ID. No authentication required."
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"message\": \"Category fetched successfully\",\n  \"data\": {\n    \"id\": 1,\n    \"name\": \"Electronics\",\n    \"description\": \"Electronic devices and gadgets\",\n    \"createdAt\": \"2024-11-18T10:00:00.000Z\",\n    \"updatedAt\": \"2024-11-18T10:00:00.000Z\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Category",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{api_key}}",
+                "description": "Required for write operations"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Electronics & Gadgets\",\n  \"description\": \"Updated description for electronics\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/categories/:id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "categories",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1",
+                  "description": "Category ID to update"
+                }
+              ]
+            },
+            "description": "Updates an existing category. Requires API key authentication."
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"message\": \"Category updated successfully\",\n  \"data\": {\n    \"id\": 1,\n    \"name\": \"Electronics & Gadgets\",\n    \"description\": \"Updated description for electronics\",\n    \"createdAt\": \"2024-11-18T10:00:00.000Z\",\n    \"updatedAt\": \"2024-11-18T11:00:00.000Z\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Category",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "{{api_key}}",
+                "description": "Required for write operations"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/categories/:id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "categories",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1",
+                  "description": "Category ID to delete"
+                }
+              ]
+            },
+            "description": "Deletes a category. Requires API key authentication. Cannot delete category with existing products."
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"message\": \"Category deleted successfully\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "description": "All product-related endpoints",
+      "item": [
+        {
+          "name": "Create Product",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{api_key}}",
+                "description": "Required for write operations"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Laptop\",\n  \"price\": 999.99,\n  \"categoryId\": 1,\n  \"inStock\": true\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/products",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "products"
+              ]
+            },
+            "description": "Creates a new product. Requires API key authentication. Category must exist."
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "status": "Created",
+              "code": 201,
+              "body": "{\n  \"success\": true,\n  \"message\": \"Product created successfully\",\n  \"data\": {\n    \"id\": 1,\n    \"name\": \"Laptop\",\n    \"price\": 999.99,\n    \"categoryId\": 1,\n    \"inStock\": true,\n    \"createdAt\": \"2024-11-18T10:00:00.000Z\",\n    \"updatedAt\": \"2024-11-18T10:00:00.000Z\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get All Products",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/products",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "products"
+              ]
+            },
+            "description": "Retrieves all products with category information. No authentication required."
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"message\": \"Products fetched successfully\",\n  \"data\": [\n    {\n      \"id\": 1,\n      \"name\": \"Laptop\",\n      \"price\": 999.99,\n      \"categoryId\": 1,\n      \"inStock\": true,\n      \"category\": {\n        \"id\": 1,\n        \"name\": \"Electronics\",\n        \"description\": \"Electronic devices and gadgets\"\n      },\n      \"createdAt\": \"2024-11-18T10:00:00.000Z\",\n      \"updatedAt\": \"2024-11-18T10:00:00.000Z\"\n    },\n    {\n      \"id\": 2,\n      \"name\": \"T-Shirt\",\n      \"price\": 29.99,\n      \"categoryId\": 2,\n      \"inStock\": true,\n      \"category\": {\n        \"id\": 2,\n        \"name\": \"Clothing\",\n        \"description\": \"Apparel and fashion items\"\n      },\n      \"createdAt\": \"2024-11-18T10:05:00.000Z\",\n      \"updatedAt\": \"2024-11-18T10:05:00.000Z\"\n    }\n  ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Product by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/products/:id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "products",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1",
+                  "description": "Product ID"
+                }
+              ]
+            },
+            "description": "Retrieves a single product by ID with category information. No authentication required."
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"message\": \"Product fetched successfully\",\n  \"data\": {\n    \"id\": 1,\n    \"name\": \"Laptop\",\n    \"price\": 999.99,\n    \"categoryId\": 1,\n    \"inStock\": true,\n    \"category\": {\n      \"id\": 1,\n      \"name\": \"Electronics\",\n      \"description\": \"Electronic devices and gadgets\"\n    },\n    \"createdAt\": \"2024-11-18T10:00:00.000Z\",\n    \"updatedAt\": \"2024-11-18T10:00:00.000Z\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Product",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{api_key}}",
+                "description": "Required for write operations"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Gaming Laptop\",\n  \"price\": 1299.99,\n  \"categoryId\": 1,\n  \"inStock\": false\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/products/:id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "products",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1",
+                  "description": "Product ID to update"
+                }
+              ]
+            },
+            "description": "Updates an existing product. Requires API key authentication."
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"message\": \"Product updated successfully\",\n  \"data\": {\n    \"id\": 1,\n    \"name\": \"Gaming Laptop\",\n    \"price\": 1299.99,\n    \"categoryId\": 1,\n    \"inStock\": false,\n    \"createdAt\": \"2024-11-18T10:00:00.000Z\",\n    \"updatedAt\": \"2024-11-18T11:00:00.000Z\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Product",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "{{api_key}}",
+                "description": "Required for write operations"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/products/:id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "products",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1",
+                  "description": "Product ID to delete"
+                }
+              ]
+            },
+            "description": "Deletes a product. Requires API key authentication."
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"success\": true,\n  \"message\": \"Product deleted successfully\"\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://round-2-task.onrender.com/api",
+      "type": "string",
+      "description": "Production API base URL"
+    },
+    {
+      "key": "api_key",
+      "value": "tasknapi",
+      "type": "string",
+      "description": "API key for authentication (required for POST, PUT, DELETE operations)"
+    }
+  ]
+}
